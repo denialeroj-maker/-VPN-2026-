@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Лучшие VPN 2026 — Список</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { min-height: 100%; }
+
+    body {
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        background: #0a0a14;
+        color: #dcdce6;
+        line-height: 1.7;
+        padding: 40px 20px;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    #vpn-rain {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .container {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    header { text-align: center; margin-bottom: 50px; }
+
+    .rocket-wrap {
+        position: relative;
+        width: 220px; height: 220px;
+        margin: 0 auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .orbit-text {
+        position: absolute;
+        inset: 0;
+        width: 100%; height: 100%;
+        animation: spin 12s linear infinite;
+    }
+    .orbit-text text {
+        font-family: 'Segoe UI', system-ui, sans-serif;
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 4px;
+        fill: #00d2ff;
+        text-transform: uppercase;
+        filter: drop-shadow(0 0 6px rgba(0, 210, 255, 0.8));
+    }
+    .rocket {
+        font-size: 72px;
+        line-height: 1;
+        animation: fly 2.5s ease-in-out infinite;
+        filter: drop-shadow(0 0 20px rgba(123, 47, 247, 0.9));
+        z-index: 1;
+    }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes fly {
+        0%, 100% { transform: translateY(0) rotate(-45deg); }
+        50%      { transform: translateY(-12px) rotate(-45deg); }
+    }
+
+    h1 {
+        font-size: 2rem;
+        color: #ffffff;
+        margin-bottom: 8px;
+        border-bottom: 3px solid #7b2ff7;
+        padding-bottom: 12px;
+        display: inline-block;
+        text-shadow: 0 0 25px rgba(123, 47, 247, 0.6);
+    }
+    .subtitle { color: #a0a0b8; margin-top: 12px; font-size: 1rem; }
+
+    .vpn-block {
+        margin-bottom: 36px;
+        padding: 22px 26px;
+        border-radius: 14px;
+        background: rgba(20, 20, 38, 0.88);
+        border: 1px solid rgba(123, 47, 247, 0.18);
+        backdrop-filter: blur(6px);
+        transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .vpn-block:hover {
+        border-color: rgba(0, 210, 255, 0.5);
+        box-shadow: 0 10px 30px rgba(0, 210, 255, 0.12);
+        transform: translateY(-2px);
+    }
+    .vpn-block h2 { font-size: 1.4rem; color: #ffffff; margin-bottom: 6px; }
+    .vpn-block h2 .num { color: #7b2ff7; font-weight: 800; margin-right: 8px; }
+    .vpn-block .tagline { color: #00d2ff; font-size: 0.9rem; margin-bottom: 14px; font-style: italic; }
+    .vpn-block p { margin-bottom: 12px; color: #b8b8cc; }
+    .vpn-block .specs { margin: 14px 0; padding-left: 18px; border-left: 2px solid #7b2ff7; }
+    .vpn-block .specs li { list-style: none; padding: 3px 0; color: #c8c8dc; font-size: 0.95rem; }
+    .vpn-block .specs li::before { content: "→ "; color: #00d2ff; }
+    .vpn-block .price-row { margin-top: 14px; font-size: 1rem; }
+    .vpn-block .price-row .price { color: #00ff9d; font-weight: 700; font-size: 1.1rem; }
+
+    .site-btn {
+        display: inline-block;
+        margin-top: 16px;
+        padding: 10px 22px;
+        background: linear-gradient(135deg, #7b2ff7, #00d2ff);
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        letter-spacing: 0.3px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+        box-shadow: 0 4px 15px rgba(123, 47, 247, 0.35);
+    }
+    .site-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 210, 255, 0.45);
+        filter: brightness(1.1);
+    }
+    .site-btn:active { transform: translateY(0); }
+
+    .badge {
+        display: inline-block;
+        background: #7b2ff7;
+        color: #fff;
+        font-size: 0.7rem;
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin-left: 8px;
+        vertical-align: middle;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+    .badge.gold { background: #ffd700; color: #000; }
+    .badge.green { background: #00c853; }
+
+    footer {
+        margin-top: 40px;
+        text-align: center;
+        color: #6a6a80;
+        font-size: 0.85rem;
+    }
+
+    /* ============================================
+       ЭКРАН КАПЧИ — ИСПРАВЛЕНО ДЛЯ МОБИЛЬНЫХ
+       ============================================ */
+    .human-check {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        z-index: 2147483647;
+        background: rgba(10, 10, 20, 0.97);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+    }
+    .human-check.active { display: flex; }
+    .human-check.hidden { display: none !important; }
+
+    .human-box {
+        max-width: 440px;
+        width: 100%;
+        background: #14142b;
+        border: 1px solid rgba(123, 47, 247, 0.4);
+        border-radius: 16px;
+        padding: 28px 22px;
+        box-shadow: 0 20px 60px rgba(123, 47, 247, 0.3);
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        margin: auto;
+    }
+    .human-box h2 { color: #fff; font-size: 1.3rem; margin-bottom: 8px; }
+    .human-box > p.hint { color: #a0a0b8; font-size: 0.9rem; margin-bottom: 22px; }
+
+    .steps { display: flex; justify-content: center; gap: 10px; margin-bottom: 22px; }
+    .step-dot {
+        width: 32px; height: 4px;
+        border-radius: 2px;
+        background: rgba(123, 47, 247, 0.25);
+        transition: background 0.3s;
+    }
+    .step-dot.active { background: #00d2ff; box-shadow: 0 0 10px #00d2ff; }
+    .step-dot.done { background: #00ff9d; box-shadow: 0 0 10px #00ff9d; }
+
+    .step { display: none; }
+    .step.active { display: block; }
+
+    .captcha-task {
+        display: flex; gap: 10px; margin-bottom: 18px;
+        align-items: center; justify-content: center;
+    }
+    .captcha-task span {
+        color: #00d2ff; font-weight: 700;
+        font-size: 1.2rem; white-space: nowrap;
+    }
+    .captcha-task input {
+        width: 110px; padding: 10px 12px;
+        background: #0a0a14;
+        border: 1px solid rgba(123, 47, 247, 0.4);
+        border-radius: 8px; color: #fff;
+        font-size: 1.1rem; text-align: center; outline: none;
+    }
+    .captcha-task input:focus { border-color: #00d2ff; }
+
+    .human-btn {
+        width: 100%; padding: 12px;
+        background: linear-gradient(135deg, #7b2ff7, #00d2ff);
+        color: #fff; border: none; border-radius: 10px;
+        font-weight: 700; font-size: 1rem; cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+        touch-action: manipulation;
+    }
+    .human-btn:disabled { opacity: 0.4; cursor: not-allowed; filter: grayscale(0.5); }
+    .human-btn:not(:disabled):hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 210, 255, 0.45);
+    }
+
+    .human-error {
+        color: #ff5566; font-size: 0.85rem;
+        margin-top: 12px; min-height: 1em;
+    }
+
+    .img-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        margin: 0 auto 18px;
+        max-width: 300px;
+    }
+    .img-cell {
+        aspect-ratio: 1 / 1;
+        background: linear-gradient(135deg, #1a1a33, #0f0f22);
+        border: 2px solid rgba(123, 47, 247, 0.25);
+        border-radius: 10px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 2.2rem; cursor: pointer; user-select: none;
+        transition: transform 0.15s, border-color 0.2s, background 0.2s;
+        touch-action: manipulation;
+    }
+    .img-cell:hover { transform: scale(1.05); border-color: rgba(0, 210, 255, 0.6); }
+    .img-cell.selected {
+        border-color: #00d2ff;
+        background: linear-gradient(135deg, #1c2a4a, #0f1a33);
+        box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+    }
+
+    /* ===== Мобильные фиксы ===== */
+    @media (max-width: 700px) {
+        body { padding: 24px 14px; }
+
+        h1 { font-size: 1.6rem; }
+        .rocket-wrap { width: 180px; height: 180px; }
+        .rocket { font-size: 58px; }
+        .vpn-block { padding: 18px; }
+
+        .human-check { padding: 12px; }
+
+        .human-box {
+            padding: 22px 16px;
+            border-radius: 14px;
+            max-width: 100%;
+        }
+        .human-box h2 { font-size: 1.15rem; }
+        .human-box > p.hint { font-size: 0.85rem; margin-bottom: 16px; }
+
+        .captcha-task { gap: 8px; margin-bottom: 14px; }
+        .captcha-task span { font-size: 1.05rem; }
+        .captcha-task input {
+            width: 90px;
+            padding: 12px 8px;
+            font-size: 1.2rem;
+        }
+
+        .human-btn { padding: 14px; font-size: 1.05rem; }
+
+        .img-grid { max-width: 240px; gap: 6px; }
+        .img-cell { font-size: 1.8rem; }
+
+        .step-dot { width: 26px; }
+    }
+</style>
+</head>
+<body>
+
+    <canvas id="vpn-rain"></canvas>
+
+    <div id="human-check" class="human-check">
+        <div class="human-box">
+            <div class="steps">
+                <div class="step-dot active" id="dot-1"></div>
+                <div class="step-dot" id="dot-2"></div>
+            </div>
+
+            <div class="step active" id="step-1">
+                <h2>Шаг 1 из 2</h2>
+                <p class="hint">Решите пример, чтобы подтвердить, что вы человек</p>
+                <div class="captcha-task">
+                    <span id="captcha-q">230 + 190 =</span>
+                    <input type="text" id="captcha-a" placeholder="?" autocomplete="off" inputmode="numeric">
+                </div>
+                <button id="human-btn-1" class="human-btn" disabled>Продолжить</button>
+                <p id="human-error-1" class="human-error"></p>
+            </div>
+
+            <div class="step" id="step-2">
+                <h2>Шаг 2 из 2</h2>
+                <p class="hint">Нажмите на все <b>🚀 ракеты</b>, чтобы продолжить</p>
+                <div class="img-grid" id="img-grid"></div>
+                <button id="human-btn-2" class="human-btn" disabled>Продолжить</button>
+                <p id="human-error-2" class="human-error"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="rocket-wrap">
+                <svg class="orbit-text" viewBox="0 0 200 200">
+                    <defs>
+                        <path id="circlePath"
+                              d="M 100, 100
+                                 m -75, 0
+                                 a 75,75 0 1,1 150,0
+                                 a 75,75 0 1,1 -150,0" />
+                    </defs>
+                    <text>
+                        <textPath href="#circlePath" startOffset="0%">
+                            VPN • VPN • VPN • VPN • VPN • VPN •
+                        </textPath>
+                    </text>
+                </svg>
+                <div class="rocket">🚀</div>
+            </div>
+
+            <h1>Лучшие VPN 2026</h1>
+            <p class="subtitle">Список проверенных сервисов для безопасного интернета</p>
+        </header>
+        <div class="vpn-block">
+            <h2><span class="num">1.</span>NordVPN <span class="badge gold">Выбор редакции</span></h2>
+            <p class="tagline">Лучший в целом — скорость, безопасность и огромная сеть серверов</p>
+            <p>NordVPN стабильно занимает первое место благодаря сочетанию высокой скорости, серьёзного подхода к приватности и удобных приложений для всех платформ. Отлично подходит как для стриминга, так и для повседневного использования.</p>
+            <ul class="specs">
+                <li>Более 7000 серверов в 137 странах</li>
+                <li>Протокол NordLynx (на базе WireGuard) — максимальная скорость</li>
+                <li>Функция Double VPN и Onion over VPN</li>
+                <li>Строгая политика no-logs, подтверждённая аудитом</li>
+                <li>Защита от утечек DNS и Kill Switch</li>
+            </ul>
+            <p class="price-row">Цена: <span class="price">$3.99/мес</span> при годовой подписке</p>
+            <a href="https://nordvpn.com/" target="_blank" rel="noopener" class="site-btn">Перейти на nordvpn.com →</a>
+        </div>
+
+        <div class="vpn-block">
+            <h2><span class="num">2.</span>ExpressVPN</h2>
+            <p class="tagline">Простота использования и стабильность на всех устройствах</p>
+            <p>ExpressVPN известен своим простым интерфейсом и надёжным соединением. Собственный протокол Lightway обеспечивает быстрое подключение и стабильную работу даже на слабых сетях.</p>
+            <ul class="specs">
+                <li>Серверы в 105 странах мира</li>
+                <li>Собственный протокол Lightway</li>
+                <li>Технология TrustedServer — серверы работают только в RAM</li>
+                <li>Поддержка 24/7 через чат</li>
+                <li>30-дневная гарантия возврата средств</li>
+            </ul>
+            <p class="price-row">Цена: <span class="price">$4.99/мес</span> при годовой подписке</p>
+            <a href="https://www.expressvpn.com/" target="_blank" rel="noopener" class="site-btn">Перейти на expressvpn.com →</a>
+        </div>
+
+        <div class="vpn-block">
+            <h2><span class="num">3.</span>Surfshark <span class="badge green">Лучшая цена</span></h2>
+            <p class="tagline">Бюджетный вариант с безлимитным числом устройств</p>
+            <p>Surfshark — отличный выбор для тех, кто хочет сэкономить, не теряя в качестве. Главная фишка — неограниченное количество подключённых устройств на одной подписке.</p>
+            <ul class="specs">
+                <li>Безлимитное число устройств</li>
+                <li>Серверы в 100 странах</li>
+                <li>Встроенный блокировщик рекламы CleanWeb</li>
+                <li>Режим MultiHop для двойного шифрования</li>
+                <li>Дружелюбный интерфейс и хорошая скорость</li>
+            </ul>
+            <p class="price-row">Цена: <span class="price">$2.49/мес</span> при годовой подписке</p>
+            <a href="https://surfshark.com/" target="_blank" rel="noopener" class="site-btn">Перейти на surfshark.com →</a>
+        </div>
+
+        <div class="vpn-block">
+            <h2><span class="num">4.</span>CyberGhost</h2>
+            <p class="tagline">Ориентирован на стриминг и простоту настройки</p>
+            <p>CyberGhost делает ставку на удобство: специальные профили для стриминга, торрентов и игр позволяют подключиться к нужному серверу в один клик.</p>
+            <ul class="specs">
+                <li>Более 110 локаций по всему миру</li>
+                <li>Специальные профили для стриминга и P2P</li>
+                <li>45-дневная гарантия возврата средств</li>
+                <li>Простой и понятный интерфейс</li>
+                <li>Хорошая скорость на большинстве серверов</li>
+            </ul>
+            <p class="price-row">Цена: <span class="price">$2.19/мес</span> при годовой подписке</p>
+            <a href="https://www.cyberghostvpn.com/" target="_blank" rel="noopener" class="site-btn">Перейти на cyberghostvpn.com →</a>
+        </div>
+
+        <div class="vpn-block">
+            <h2><span class="num">5.</span>Proton VPN</h2>
+            <p class="tagline">Максимальная приватность и открытый исходный код</p>
+            <p>Proton VPN — выбор тех, для кого приватность стоит на первом месте. Открытый исходный код, швейцарская юрисдикция и наличие бесплатного тарифа делают его уникальным на рынке.</p>
+            <ul class="specs">
+                <li>Открытый исходный код всех приложений</li>
+                <li>Юрисдикция Швейцарии — строгие законы о приватности</li>
+                <li>Бесплатный тариф без ограничений по трафику</li>
+                <li>Функция Secure Core — двойное шифрование</li>
+                <li>Разработчик — создатели ProtonMail</li>
+            </ul>
+            <p class="price-row">Цена: <span class="price">$3.99/мес</span> при годовой подписке</p>
+            <a href="https://protonvpn.com/" target="_blank" rel="noopener" class="site-btn">Перейти на protonvpn.com →</a>
+        </div>
+
+        <footer>
+            © 2026 VPN Rating. Цены указаны при годовой подписке. Материал носит информационный характер.
+        </footer>
+    </div>
+
+    <!-- ========== СКРИПТ ФОНА: падающие названия VPN + инопланетянин ========== -->
+    <script>
+    (function () {
+        const canvas = document.getElementById('vpn-rain');
+        const ctx = canvas.getContext('2d');
+
+        let W = 0, H = 0, dpr = 1;
+
+        const VPN_NAMES = [
+            'NordVPN','ExpressVPN','Surfshark','CyberGhost','Proton VPN',
+            'IPVanish','Mullvad','TunnelBear','PIA','Windscribe',
+            'PrivateVPN','Hide.me','Hotspot Shield','Atlas VPN',
+            'PureVPN','VyprVPN','HMA','Speedify','TorGuard',
+            'Astrill','Perfect Privacy','IVPN','OVPN','AzireVPN',
+            'Trust.Zone','VPN Unlimited','CactusVPN','Buffered VPN'
+        ];
+
+        const COLORS = [
+            'rgba(123, 47, 247, 0.55)',
+            'rgba(0, 210, 255, 0.45)',
+            'rgba(0, 255, 157, 0.35)',
+            'rgba(160, 160, 200, 0.40)',
+            'rgba(200, 100, 255, 0.35)',
+            'rgba(100, 200, 255, 0.40)'
+        ];
+
+        let MAX_LABELS = 60;
+        const SHATTER_Y = 0.5;
+        const labels = [];
+
+        function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
+
+        function spawnLabel(startY) {
+            labels.push({
+                text: pick(VPN_NAMES),
+                x: 60 + Math.random() * Math.max(100, W - 120),
+                y: (startY !== undefined) ? startY : -40 - Math.random() * 300,
+                vy: 0.4 + Math.random() * 0.9,
+                fontSize: 14 + Math.random() * 20,
+                color: pick(COLORS),
+                shattered: false,
+                particles: []
+            });
+        }
+
+        function shatter(L) {
+            L.shattered = true;
+            const count = 16 + Math.floor(Math.random() * 14);
+            const halfW = L.text.length * L.fontSize * 0.3;
+            const halfH = L.fontSize * 0.5;
+            for (let i = 0; i < count; i++) {
+                L.particles.push({
+                    x: L.x + (Math.random() - 0.5) * halfW * 2,
+                    y: L.y + (Math.random() - 0.5) * halfH * 2,
+                    vx: (Math.random() - 0.5) * 1.6,
+                    vy: L.vy + Math.random() * 1.2,
+                    size: 1 + Math.random() * 2.2,
+                    alpha: 0.9,
+                    fade: 0.006 + Math.random() * 0.008
+                });
+            }
+        }
+
+        /* ===== Луна и инопланетянин ===== */
+        let moonX = 0, moonY = 0, moonR = 0;
+
+        function computeMoon() {
+            // На мобильных луна меньше, чтобы не перекрывать контент
+            const isMobile = Math.min(W, H) < 700;
+            const sizeFactor = isMobile ? 0.07 : 0.09;
+            moonR = Math.max(50, Math.min(W * sizeFactor, isMobile ? 80 : 110));
+            moonX = W - moonR - (isMobile ? 14 : 30);
+            moonY = moonR + (isMobile ? 14 : 30);
+        }
+
+        function drawMoonAndAlien(t) {
+            const glow = ctx.createRadialGradient(moonX, moonY, moonR * 0.5, moonX, moonY, moonR * 1.7);
+            glow.addColorStop(0, 'rgba(200, 200, 230, 0.10)');
+            glow.addColorStop(1, 'rgba(200, 200, 230, 0)');
+            ctx.fillStyle = glow;
+            ctx.beginPath();
+            ctx.arc(moonX, moonY, moonR * 1.7, 0, Math.PI * 2);
+            ctx.fill();
+
+            const moonGrad = ctx.createRadialGradient(
+                moonX - moonR * 0.3, moonY - moonR * 0.3, moonR * 0.1,
+                moonX, moonY, moonR
+            );
+            moonGrad.addColorStop(0, 'rgba(220, 220, 240, 0.38)');
+            moonGrad.addColorStop(0.7, 'rgba(160, 160, 190, 0.28)');
+            moonGrad.addColorStop(1, 'rgba(120, 120, 150, 0.20)');
+            ctx.fillStyle = moonGrad;
+            ctx.beginPath();
+            ctx.arc(moonX, moonY, moonR, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.strokeStyle = 'rgba(200, 200, 230, 0.32)';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.arc(moonX, moonY, moonR, 0, Math.PI * 2);
+            ctx.stroke();
+
+            const craters = [
+                {dx:-0.40, dy:-0.25, r:0.14},
+                {dx: 0.30, dy:-0.45, r:0.09},
+                {dx: 0.20, dy: 0.35, r:0.12},
+                {dx:-0.50, dy: 0.30, r:0.08},
+                {dx: 0.05, dy:-0.10, r:0.06}
+            ];
+            craters.forEach(c => {
+                const cx = moonX + c.dx * moonR;
+                const cy = moonY + c.dy * moonR;
+                const cr = c.r * moonR;
+                const cg = ctx.createRadialGradient(cx - cr * 0.3, cy - cr * 0.3, cr * 0.1, cx, cy, cr);
+                cg.addColorStop(0, 'rgba(90, 90, 120, 0.38)');
+                cg.addColorStop(1, 'rgba(90, 90, 120, 0.05)');
+                ctx.fillStyle = cg;
+                ctx.beginPath();
+                ctx.arc(cx, cy, cr, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            drawAlien(moonX, moonY + moonR * 0.05, moonR * 0.42, t);
+        }
+
+        function drawAlien(x, y, s, t) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(Math.sin(t * 0.0015) * 0.05);
+
+            const green = 'rgba(120, 255, 140, 0.9)';
+            const greenDark = 'rgba(60, 180, 90, 0.9)';
+            const black = 'rgba(20, 20, 30, 0.92)';
+
+            // Ноги
+            ctx.strokeStyle = green;
+            ctx.lineWidth = s * 0.14;
+            ctx.lineCap = 'round';
+            ctx.beginPath(); ctx.moveTo(-s*0.25, s*0.55); ctx.lineTo(-s*0.35, s*0.85); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo( s*0.25, s*0.55); ctx.lineTo( s*0.35, s*0.85); ctx.stroke();
+
+            // Тело
+            ctx.fillStyle = green;
+            ctx.beginPath();
+            ctx.ellipse(0, s*0.2, s*0.5, s*0.6, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = greenDark;
+            ctx.lineWidth = s * 0.06;
+            ctx.stroke();
+
+            // Левая рука
+            ctx.strokeStyle = green;
+            ctx.lineWidth = s * 0.13;
+            ctx.beginPath(); ctx.moveTo(-s*0.45, 0); ctx.lineTo(-s*0.65, s*0.35); ctx.stroke();
+            ctx.fillStyle = green;
+            ctx.beginPath(); ctx.arc(-s*0.65, s*0.4, s*0.12, 0, Math.PI * 2); ctx.fill();
+
+            // Правая рука — МАШЕТ
+            const wave = Math.sin(t * 0.006);
+            const armAngle = -Math.PI * 0.55 + wave * 0.5;
+            const shoulderX = s * 0.45, shoulderY = -s * 0.05;
+            const handX = shoulderX + Math.cos(armAngle) * s * 0.65;
+            const handY = shoulderY + Math.sin(armAngle) * s * 0.65;
+
+            ctx.strokeStyle = green;
+            ctx.lineWidth = s * 0.13;
+            ctx.beginPath(); ctx.moveTo(shoulderX, shoulderY); ctx.lineTo(handX, handY); ctx.stroke();
+
+            ctx.fillStyle = green;
+            ctx.beginPath(); ctx.arc(handX, handY, s * 0.13, 0, Math.PI * 2); ctx.fill();
+
+            // Пальцы
+            ctx.strokeStyle = green;
+            ctx.lineWidth = s * 0.06;
+            for (let i = -1; i <= 1; i++) {
+                const fa = armAngle + i * 0.28;
+                ctx.beginPath();
+                ctx.moveTo(handX, handY);
+                ctx.lineTo(handX + Math.cos(fa) * s * 0.14, handY + Math.sin(fa) * s * 0.14);
+                ctx.stroke();
+            }
+
+            // Голова
+            const headY = -s * 0.55;
+            ctx.fillStyle = green;
+            ctx.beginPath();
+            ctx.ellipse(0, headY, s * 0.55, s * 0.5, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = greenDark;
+            ctx.lineWidth = s * 0.06;
+            ctx.stroke();
+
+            // Глаза
+            ctx.fillStyle = black;
+            ctx.beginPath(); ctx.ellipse(-s*0.20, headY + s*0.05, s*0.14, s*0.18, -0.3, 0, Math.PI*2); ctx.fill();
+            ctx.fillStyle = 'rgba(255,255,255,0.55)';
+            ctx.beginPath(); ctx.arc(-s*0.24, headY - s*0.02, s*0.04, 0, Math.PI*2); ctx.fill();
+
+            ctx.fillStyle = black;
+            ctx.beginPath(); ctx.ellipse(s*0.20, headY + s*0.05, s*0.14, s*0.18, 0.3, 0, Math.PI*2); ctx.fill();
+            ctx.fillStyle = 'rgba(255,255,255,0.55)';
+            ctx.beginPath(); ctx.arc(s*0.16, headY - s*0.02, s*0.04, 0, Math.PI*2); ctx.fill();
+
+            // Улыбка
+            ctx.strokeStyle = greenDark;
+            ctx.lineWidth = s * 0.05;
+            ctx.beginPath();
+            ctx.arc(0, headY + s*0.28, s*0.10, 0.15 * Math.PI, 0.85 * Math.PI);
+            ctx.stroke();
+
+            ctx.restore();
+        }
+
+        function resize() {
+            dpr = window.devicePixelRatio || 1;
+            W = window.innerWidth;
+            H = window.innerHeight;
+            canvas.width  = W * dpr;
+            canvas.height = H * dpr;
+            canvas.style.width  = W + 'px';
+            canvas.style.height = H + 'px';
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+            computeMoon();
+
+            // На мобильных — меньше надписей, чтобы не лагало
+            const isMobile = Math.min(W, H) < 700;
+            const divisor = isMobile ? 45000 : 22000;
+            MAX_LABELS = Math.max(isMobile ? 15 : 40, Math.floor((W * H) / divisor));
+        }
+
+        resize();
+        window.addEventListener('resize', resize);
+
+        // Первичный спавн — распределяем по всей высоте
+        for (let i = 0; i < MAX_LABELS; i++) {
+            spawnLabel(-Math.random() * H);
+        }
+
+        function draw(t) {
+            ctx.clearRect(0, 0, W, H);
+
+            // Луна с инопланетянином
+            drawMoonAndAlien(t);
+
+            // Надписи
+            for (let i = labels.length - 1; i >= 0; i--) {
+                const L = labels[i];
+
+                if (!L.shattered) {
+                    L.y += L.vy;
+
+                    ctx.font = `800 ${L.fontSize}px 'Segoe UI', system-ui, sans-serif`;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.shadowColor = L.color;
+                    ctx.shadowBlur = 10;
+                    ctx.fillStyle = L.color;
+                    ctx.fillText(L.text, L.x, L.y);
+                    ctx.shadowBlur = 0;
+
+                    if (L.y >= H * SHATTER_Y) shatter(L);
+                } else {
+                    for (let p = L.particles.length - 1; p >= 0; p--) {
+                        const pt = L.particles[p];
+                        pt.x += pt.vx;
+                        pt.y += pt.vy;
+                        pt.vy += 0.02;
+                        pt.alpha -= pt.fade;
+
+                        if (pt.alpha <= 0 || pt.y > H + 20) {
+                            L.particles.splice(p, 1);
+                            continue;
+                        }
+
+                        ctx.fillStyle = L.color.replace(/[\d.]+\)$/, pt.alpha + ')');
+                        ctx.beginPath();
+                        ctx.arc(pt.x, pt.y, pt.size, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+
+                    if (L.particles.length === 0) {
+                        labels.splice(i, 1);
+                        spawnLabel(-40 - Math.random() * 200);
+                    }
+                }
+            }
+
+            while (labels.length < MAX_LABELS) {
+                spawnLabel(-40 - Math.random() * 200);
+            }
+
+            requestAnimationFrame(draw);
+        }
+
+        requestAnimationFrame(draw);
+    })();
+    </script>
+
+    <!-- ========== СКРИПТ КАПЧИ (2 ступени, мобильный фикс) ========== -->
+    <script>
+    (function () {
+        const STORAGE_KEY = 'human_verified_v2';
+        const overlay = document.getElementById('human-check');
+
+        if (localStorage.getItem(STORAGE_KEY) === 'yes') {
+            overlay.classList.add('hidden');
+            return;
+        }
+
+        // Показываем сразу, без задержки (на мобильных мигало из-за rAF)
+        overlay.classList.add('active');
+
+        // ===== Ступень 1: 230 + 190 =====
+        const STEP1_ANSWER = 420;
+        const q1 = document.getElementById('captcha-q');
+        const a1 = document.getElementById('captcha-a');
+        const btn1 = document.getElementById('human-btn-1');
+        const err1 = document.getElementById('human-error-1');
+        const dot1 = document.getElementById('dot-1');
+        const dot2 = document.getElementById('dot-2');
+        const step1El = document.getElementById('step-1');
+        const step2El = document.getElementById('step-2');
+
+        q1.textContent = '230 + 190 =';
+
+        a1.addEventListener('input', () => {
+            btn1.disabled = !(parseInt(a1.value, 10) === STEP1_ANSWER);
+            err1.textContent = '';
+        });
+
+        a1.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !btn1.disabled) btn1.click();
+        });
+
+        btn1.addEventListener('click', () => {
+            if (parseInt(a1.value, 10) !== STEP1_ANSWER) {
+                err1.textContent = 'Неверный ответ. Попробуйте ещё раз.';
+                a1.value = '';
+                btn1.disabled = true;
+                a1.focus();
+                return;
+            }
+            dot1.classList.remove('active');
+            dot1.classList.add('done');
+            dot2.classList.add('active');
+            step1El.classList.remove('active');
+            step2El.classList.add('active');
+            buildImageGrid();
+        });
+
+        // ===== Ступень 2: картинки с ракетами =====
+        const grid = document.getElementById('img-grid');
+        const btn2 = document.getElementById('human-btn-2');
+        const err2 = document.getElementById('human-error-2');
+
+        const ROCKET_EMOJI = '🚀';
+        const DECOY_EMOJI = ['🌍', '⭐', '🛰️', '☄️', '🌕', '🪐', '👽', '🌟'];
+
+        let correctCells = [];
+        let selectedCells = new Set();
+
+        function shuffle(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        function buildImageGrid() {
+            grid.innerHTML = '';
+            correctCells = [];
+            selectedCells.clear();
+            btn2.disabled = true;
+            err2.textContent = '';
+
+            const totalCells = 9;
+            const rocketCount = 3;
+            const indices = shuffle([...Array(totalCells).keys()]);
+            const rocketIdx = new Set(indices.slice(0, rocketCount));
+            const decoys = shuffle([...DECOY_EMOJI]);
+
+            for (let i = 0; i < totalCells; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'img-cell';
+                cell.dataset.index = i;
+
+                if (rocketIdx.has(i)) {
+                    cell.textContent = ROCKET_EMOJI;
+                    cell.dataset.correct = '1';
+                    correctCells.push(i);
+                } else {
+                    cell.textContent = decoys.pop() || '⭐';
+                    cell.dataset.correct = '0';
+                }
+
+                cell.addEventListener('click', () => toggleCell(cell));
+                grid.appendChild(cell);
+            }
+        }
+
+        function toggleCell(cell) {
+            const idx = parseInt(cell.dataset.index, 10);
+            if (selectedCells.has(idx)) {
+                selectedCells.delete(idx);
+                cell.classList.remove('selected');
+            } else {
+                selectedCells.add(idx);
+                cell.classList.add('selected');
+            }
+            btn2.disabled = selectedCells.size === 0;
+            err2.textContent = '';
+        }
+
+        btn2.addEventListener('click', () => {
+            const correctSet = new Set(correctCells);
+            let ok = true;
+            for (const idx of selectedCells) {
+                if (!correctSet.has(idx)) { ok = false; break; }
+            }
+            if (ok && selectedCells.size === correctSet.size) {
+                localStorage.setItem(STORAGE_KEY, 'yes');
+                overlay.classList.remove('active');
+                overlay.classList.add('hidden');
+            } else {
+                err2.textContent = 'Неверно. Попробуйте ещё раз.';
+                setTimeout(() => buildImageGrid(), 900);
+            }
+        });
+    })();
+    </script>
+
+</body>
+</html>
